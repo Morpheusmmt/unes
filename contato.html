@@ -6,8 +6,7 @@
     <title>Contato - Unes Universidade</title>
     <style>
         body {
-            background-image: url('C:/Users/Maida/Downloads/arquivos-necessarios-projetos-unes/fundo.png');
-            background-size: cover;
+            background-color: #ffffff; /* Fundo branco */
             font-family: Arial, sans-serif;
             color: #333;
             margin: 0;
@@ -64,6 +63,8 @@
         footer {
             text-align: center;
             margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f8f8; /* Fundo do footer */
         }
         a {
             color: #0056b3;
@@ -126,7 +127,7 @@
                 .then(function() {
                     document.getElementById('responseMessage').innerHTML = '<p style="color: green;">Mensagem enviada com sucesso!</p>';
                 }, function(error) {
-                    console.error('Erro ao enviar a mensagem:', error); // Log do erro
+                    console.error('Erro ao enviar a mensagem:', error);
                     document.getElementById('responseMessage').innerHTML = '<p style="color: red;">Falha ao enviar a mensagem. ' + error.text + '</p>';
                 });
         });
