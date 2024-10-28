@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato - Unes Universidade</title>
+    <style>
+        body {
+            background-image: url('C:/Users/Maida/Downloads/arquivos-necessarios-projetos-unes/fundo.png');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            width: 90%;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h2 {
+            color: #0056b3;
+            text-align: center;
+        }
+        p {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #004494;
+        }
+        #responseMessage {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media query para telas menores */
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            input, textarea {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Contato</h2>
+        <p>Se você tiver alguma dúvida ou quiser mais informações sobre a Unes Universidade, não hesite em nos contatar. Preencha o formulário abaixo e nossa equipe entrará em contato o mais breve possível.</p>
+
+        <div id="responseMessage"></div>
+
+        <form id="contactForm">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required />
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+            <input type="submit" value="Enviar" />
+        </form>
+    </div>
+    
+    <footer>
+        <h4>Todos os direitos reservados © 2024</h4>
+        <a href="index.html">Voltar para a Home</a>
+    </footer>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("mkHC_yRfAtZiCGgXE"); // Substitua pela sua Public Key do EmailJS
+        })();
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            emailjs.sendForm('service_1225xnp', 'template_3xg9ele', this)
+                .then(function() {
+                    document.getElementById('responseMessage').innerHTML = '<p style="color: green;">Mensagem enviada com sucesso!</p>';
+                }, function(error) {
+                    console.error('Erro ao enviar a mensagem:', error); // Log do erro
+                    document.getElementById('responseMessage').innerHTML = '<p style="color: red;">Falha ao enviar a mensagem. ' + error.text + '</p>';
+                });
+        });
+    </script>
+</body>
+</html>
