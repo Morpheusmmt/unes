@@ -6,7 +6,7 @@
     <title>Contato - Unes Universidade</title>
     <style>
         body {
-            background-color: #ffffff; /* Fundo branco */
+            background-color: #ffffff; 
             font-family: Arial, sans-serif;
             color: #333;
             margin: 0;
@@ -64,7 +64,7 @@
             text-align: center;
             margin-top: 20px;
             padding: 10px;
-            background-color: #f8f8f8; /* Fundo do footer */
+            background-color: #f8f8f8; 
         }
         a {
             color: #0056b3;
@@ -74,7 +74,7 @@
             text-decoration: underline;
         }
 
-        /* Media query para telas menores */
+       
         @media (max-width: 600px) {
             .container {
                 margin: 20px;
@@ -117,15 +117,16 @@
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         (function() {
-            emailjs.init("mkHC_yRfAtZiCGgXE"); // Substitua pela sua Public Key do EmailJS
+            emailjs.init("mkHC_yRfAtZiCGgXE");
         })();
 
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             emailjs.sendForm('service_1225xnp', 'template_3xg9ele', this)
-                .then(function() {
+                .then(() => {
                     document.getElementById('responseMessage').innerHTML = '<p style="color: green;">Mensagem enviada com sucesso!</p>';
+                    this.reset(); 
                 }, function(error) {
                     console.error('Erro ao enviar a mensagem:', error);
                     document.getElementById('responseMessage').innerHTML = '<p style="color: red;">Falha ao enviar a mensagem. ' + error.text + '</p>';
